@@ -63,7 +63,7 @@ public class SuperTrunfoDaReciclagem {
                         counter = counterSecond;
                         counterSecond = trade;
                   }
-                              else if(aux2 == 1){
+                 else if(aux2 == 1){
                   empate = verifyMonte();
                   if(empate != 0){
                       distributionMonte(counter);
@@ -76,8 +76,7 @@ public class SuperTrunfoDaReciclagem {
                        empate = verifyMonte();
                         if(empate != 0){
                         distributionMonte(counter);
-                        counterSecond = proxPlayer(counterSecond, 2);
-                        break;
+                        
                    }
                 }
                   else if(list.get(counter).numeroDeCartas() == 0){
@@ -86,10 +85,25 @@ public class SuperTrunfoDaReciclagem {
                         distributionMonte(counterSecond);
                         trade = counter;
                         counter = counterSecond;
-                        counterSecond = proxPlayer(trade, 2);
-                        break;
+                        counterSecond = trade;
+                        
                         }
-                    }   
+                    }
+                 if(aux2 == -1){
+                  empate = verifyMonte();
+                  if(empate != 0){
+                      distributionMonte(counterSecond);
+                  }
+                        trade = counter;
+                        counter = counterSecond;
+                        counterSecond = trade;
+                  }
+                 else if(aux2 == 1){
+                  empate = verifyMonte();
+                  if(empate != 0){
+                      distributionMonte(counter);
+                  }
+                }
               } 
               
               System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
@@ -125,7 +139,8 @@ public class SuperTrunfoDaReciclagem {
           do{
               round++;
               aux = random.nextInt(3);
-              aux++; 
+              aux++;
+              
               aux2 = comparationCards(aux, counter, counterSecond);
               
               if(aux2 == -1){
@@ -204,6 +219,7 @@ public class SuperTrunfoDaReciclagem {
                             }
                         }
                       }
+                        
                     }
                   else{
                       counterSecond = counterSecond + 1;
@@ -220,6 +236,7 @@ public class SuperTrunfoDaReciclagem {
                           }
                       }
                   }
+               
               }
               
               //Verifica quais jogadores tem cartas vazias e não utiliza eles.

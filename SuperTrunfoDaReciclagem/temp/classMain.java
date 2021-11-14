@@ -15,8 +15,9 @@ public class classMain {
        System.out.println("COR: " + carta.comparationCor(carta, carta2));
        System.out.println("ATAQUE: " + carta.comparationAtaque(carta, carta2));
        System.out.println("DECOMPOSIÇÃO: " + carta.comparationDecomp(carta, carta2));*/
-       SuperTrunfoDaReciclagem trunfo = new SuperTrunfoDaReciclagem(4);
-       trunfo.quatroJogadores("Guilherme", "Joao", "Pedro", "RANDOM");
+       SuperTrunfoDaReciclagem trunfo = new SuperTrunfoDaReciclagem(2);
+       //trunfo.quatroJogadores("Guilherme", "Joao", "Pedro", "RANDOM");
+       trunfo.doisJogadores("GUILHERME", "JOAO");
        trunfo.startJogo();
    }
 }
