@@ -278,7 +278,10 @@ public class SuperTrunfoDaReciclagem{
               
               round++;
               do{ 
-                  System.out.println("\n" + "Jogador:" + list.get(counter).getNome());
+                  System.out.println("\n" + "Jogador desafiante:" + list.get(counter).getNome());
+                  System.out.println("\nQuantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
+                   System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
+                  System.out.println("Jogador desafiado:" + list.get(counterSecond).getNome());
                   System.out.println("CARTA: " + list.get(counter).getCartas().getNome() + "\n" + 
                   "Ataque:" + list.get(counter).getCartas().getAtaque() + "\n" +  "Decomposição: " + list.get(counter).getCartas().getDecomposicao() + "\n" +
                   "Cor: " + list.get(counter).getCartas().getCor());
@@ -342,8 +345,7 @@ public class SuperTrunfoDaReciclagem{
                   break;
                   }
               }
-              System.out.println("\nQuantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
-              System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
+        
               
           }while(!list.get(0).TemCartas()|| !list.get(1).TemCartas());
           
@@ -359,8 +361,11 @@ public class SuperTrunfoDaReciclagem{
               round++;
               System.out.println();
               do{ 
-                  System.out.println("\n" + "Jogador:" + list.get(counter).getNome());
-                  System.out.println("CARTA: " + list.get(counter).getCartas().getNome() + "\n" + 
+                  System.out.println("\n" + "Jogador desafiante:" + list.get(counter).getNome());
+                  System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
+                  System.out.println("Jogador desafiado:" + list.get(counterSecond).getNome());
+                  System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
+                  System.out.println("\nCARTA: " + list.get(counter).getCartas().getNome() + "\n" + 
                   "Ataque:" + list.get(counter).getCartas().getAtaque() + "\n" +  "Decomposição: " + list.get(counter).getCartas().getDecomposicao() + "\n" +
                   "Cor: " + list.get(counter).getCartas().getCor());
                   System.out.println("==========================");
@@ -451,9 +456,7 @@ public class SuperTrunfoDaReciclagem{
               }
               if(verify != 4){
                   verify = 0;
-              System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
-              System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas() + "\n");
-              }
+             }
               else{
                    if(list.get(0).numeroDeCartas() == 32){
                     gravarArq.printf("Vencedor:" + list.get(0).getNome() + "\n" +

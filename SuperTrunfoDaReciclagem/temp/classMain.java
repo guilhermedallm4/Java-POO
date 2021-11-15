@@ -19,6 +19,7 @@ public class classMain {
        SuperTrunfoDaReciclagem trunfo = new SuperTrunfoDaReciclagem(4);
        trunfo.quatroJogadores("Guilherme", "Joao", "Pedro", "RANDOM");
        //trunfo.doisJogadores("GUILHERME", "JOAO");
-       trunfo.startJogoManual();
+       trunfo.startJogoAutomatic();
+       //trunfo.startJogoManual();
    }
 }
