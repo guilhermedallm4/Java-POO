@@ -7,8 +7,9 @@ public class Reciclavel extends Carta{
         super(codigo, nome, descricao, tipo, cor, decomposicao, ataque);
         this.reciclavel = reciclavel;
     }
-
-  public static boolean ehReciclavel(){
+    
+@Override
+  public boolean ehReciclavel(){
     return true;
   }
   @Override

@@ -1,9 +1,10 @@
 package SuperTrunfoDaReciclagem.temp;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Random;
 
 public class classMain {
-   public static void main(String [] args){
+   public static void main(String [] args) throws IOException{
        /*Baralho start = new Baralho();
        start.lerDoArquivo();
        Jogador player = new Jogador("Guilherme");
@@ -15,9 +16,9 @@ public class classMain {
        System.out.println("COR: " + carta.comparationCor(carta, carta2));
        System.out.println("ATAQUE: " + carta.comparationAtaque(carta, carta2));
        System.out.println("DECOMPOSIÇÃO: " + carta.comparationDecomp(carta, carta2));*/
-       SuperTrunfoDaReciclagem trunfo = new SuperTrunfoDaReciclagem(2);
-       //trunfo.quatroJogadores("Guilherme", "Joao", "Pedro", "RANDOM");
-       trunfo.doisJogadores("GUILHERME", "JOAO");
-       trunfo.startJogo();
+       SuperTrunfoDaReciclagem trunfo = new SuperTrunfoDaReciclagem(4);
+       trunfo.quatroJogadores("Guilherme", "Joao", "Pedro", "RANDOM");
+       //trunfo.doisJogadores("GUILHERME", "JOAO");
+       trunfo.startJogoManual();
    }
 }

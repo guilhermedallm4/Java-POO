@@ -9,7 +9,7 @@ public class NaoReciclavel extends Carta{
     }
    
 
-  
+  @Override
   public boolean ehReciclavel(){
     return false;
   }

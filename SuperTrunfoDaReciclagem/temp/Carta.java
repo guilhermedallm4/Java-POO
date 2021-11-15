@@ -1,4 +1,5 @@
 package SuperTrunfoDaReciclagem.temp;
+import java.io.IOException;
 import java.io.Serializable;
 
 
@@ -81,7 +82,9 @@ public abstract class Carta{
     public void setAtaque(int ataque) {
         this.ataque = ataque;
     }
-
+    public abstract boolean ehReciclavel();
+       
+    
     
     @Override
     public String toString() {
@@ -95,7 +98,7 @@ public abstract class Carta{
                 ", ataque=" + ataque +
                 '}';
     }
-    public int comparationCor(Carta cartaOne, Carta cartaSecond){
+    public int comparationCor(Carta cartaOne, Carta cartaSecond) {
                 
                 //Compara a igualdade das cores
                 if(cartaOne.cor.toString().equals(cartaSecond.cor.toString())){
@@ -103,8 +106,7 @@ public abstract class Carta{
                 }
                 //Super Pneu
                 else if(cartaOne.cor.toString().equals("menor")){
-                    if(cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("branco") || cartaSecond.cor.toString().equals("marrom") || 
-                            cartaSecond.cor.toString().equals("cinza") || cartaSecond.cor.toString().equals("laranja")){
+                    if(cartaSecond.ehReciclavel()){
                         return 1;
                         
                     }
@@ -113,10 +115,21 @@ public abstract class Carta{
                             
                     }
                 }
+                
+                else if(cartaSecond.cor.toString().equals("menor")){
+                        if(cartaSecond.ehReciclavel()){
+                        return -1;
+                    }
+                    else{
+                            return 1;
+                            
+                    }
+                }
                 //Compara Dom Latom
                 else if(cartaOne.cor.toString().equals("maior")){
                     if(cartaSecond.getCodigo().equals("A1") || cartaSecond.getCodigo().equals("B1") || cartaSecond.getCodigo().equals("C1") ||
-                            cartaSecond.getCodigo().equals("E1") || cartaSecond.getCodigo().equals("F1")|| cartaSecond.getCodigo().equals("H1")){
+                            cartaSecond.getCodigo().equals("E1") || cartaSecond.getCodigo().equals("F1")|| cartaSecond.getCodigo().equals("H1") ||
+                            !cartaSecond.ehReciclavel()){
                         return -1;
                     }
                     else{
@@ -126,7 +139,8 @@ public abstract class Carta{
                 }
                 else if(cartaSecond.cor.toString().equals("maior")){
                     if(cartaOne.getCodigo().equals("A1") || cartaOne.getCodigo().equals("B1") || cartaOne.getCodigo().equals("C1") ||
-                            cartaOne.getCodigo().equals("E1") || cartaOne.getCodigo().equals("F1")|| cartaOne.getCodigo().equals("H1")){
+                            cartaOne.getCodigo().equals("E1") || cartaOne.getCodigo().equals("F1")|| cartaOne.getCodigo().equals("H1")||
+                            !cartaSecond.ehReciclavel()){
                         return 1;
                     }
                     else{
@@ -152,7 +166,7 @@ public abstract class Carta{
                 }
                 
                 //COMPARA AZUL
-                else if(cartaOne.cor.toString().equals("azul")){
+                else if(cartaOne.cor.toString().equals("azul") ){
                     if(cartaSecond.cor.toString().equals("vermelho") || cartaSecond.cor.toString().equals("amarelo") || cartaSecond.cor.toString().equals("verde") 
                             || cartaSecond.cor.toString().equals("marrom") || cartaSecond.cor.toString().equals("menor")){
                         return 1;
@@ -269,7 +283,7 @@ public abstract class Carta{
                    
          }
     
-    public int comparationAtaque(Carta cartaOne, Carta cartaSecond){
+    public int comparationAtaque(Carta cartaOne, Carta cartaSecond) {
         //compara dom Latom
         if(cartaOne.getCodigo().equals("H3")){
             if(cartaSecond.getCodigo().equals("A1") || cartaSecond.getCodigo().equals("B1") || cartaSecond.getCodigo().equals("C1") ||

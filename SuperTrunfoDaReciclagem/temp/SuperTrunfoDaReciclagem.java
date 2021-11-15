@@ -3,9 +3,12 @@ package SuperTrunfoDaReciclagem.temp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
-
-public class SuperTrunfoDaReciclagem {
+public class SuperTrunfoDaReciclagem{
 
     private List<Jogador> list = new ArrayList<>();
     private List<Integer> number = new ArrayList<>();
@@ -18,10 +21,10 @@ public class SuperTrunfoDaReciclagem {
     public int[] iVector = new int[32];
     private int qntJogadores;
     public int i = 0, aux, aux2, counter, counterSecond, trade, round = 0, verify = 0;
-    public int jogador1 = 0, jogador2 = 1, jogador3 = 2, jogador4 = 3, size;
+    public int option, size;
     
     //Metodo construtor
-    public SuperTrunfoDaReciclagem(int qntJogadores) {
+    public SuperTrunfoDaReciclagem(int qntJogadores){
         this.qntJogadores = qntJogadores;
         for (i = 0; i < 32; i++) {
             aux = random.nextInt(32);
@@ -38,8 +41,9 @@ public class SuperTrunfoDaReciclagem {
     }
     
     //Metodos especiais
-    public void startJogo(){
-        
+    public void startJogoAutomatic() throws IOException {
+           FileWriter arq = new FileWriter("c:\\teste.txt");
+           PrintWriter gravarArq = new PrintWriter(arq);
       if(getQntJogadores() == 2){
           counter = getRandom(1);
           counterSecond = counter + 1;
@@ -81,21 +85,23 @@ public class SuperTrunfoDaReciclagem {
            }
         }
                    if(list.get(1).numeroDeCartas() == 32){
-                   System.out.println("Vencedor: " + list.get(1).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
-                   System.out.println("Perdedor: " + list.get(0).getNome());
-                    System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
-                   System.out.println("Quantidade de Rounds: " + round);
+                  gravarArq.printf("Vencedor: " + list.get(1).getNome() +  "\n" +
+                  "Quantidade de Cartas: " + list.get(1).numeroDeCartas() +  "\n" +
+                   "Perdedor: " + list.get(0).getNome() +  "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() +  "\n" +
+                   "Quantidade de Rounds: " + round);
+                    arq.close();
                   break;
               }
                    else if(list.get(0).numeroDeCartas() == 32){
-                   System.out.println("Vencedor: " + list.get(0).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
-                   System.out.println("Perdedor: " + list.get(1).getNome());
-                    System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
-                   System.out.println("Quantidade de Rounds: " + round);
+                gravarArq.printf("Vencedor: " + list.get(0).getNome() +  "\n" +
+                  "Quantidade de Cartas: " + list.get(0).numeroDeCartas() +  "\n" +
+                   "Perdedor: " + list.get(1).getNome() +  "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() +  "\n" +
+                   "Quantidade de Rounds: " + round);
+                    arq.close();
                   break;
-                      }
+                  }
               }
               System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
               System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
@@ -194,51 +200,56 @@ public class SuperTrunfoDaReciclagem {
               }
               else{
                    if(list.get(0).numeroDeCartas() == 32){
-                   System.out.println("Vencedor:" + list.get(0).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(1).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(2).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(2).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(3).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(3).numeroDeCartas());
-                   System.out.println("Quantidade de Rounds:" + round);
+                    gravarArq.printf("Vencedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(3).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
                    break;
               }
               else if(list.get(1).numeroDeCartas() == 32){
-                   System.out.println("Vencedor:" + list.get(1).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(0).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(2).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(2).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(3).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(3).numeroDeCartas());
-                   System.out.println("Quantidade de Rounds:" + round);
-                    break;
+                    gravarArq.printf("Vencedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(3).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
+                   break;
+                    
               }
               else if(list.get(2).numeroDeCartas() == 32){
-                   System.out.println("Vencedor:" + list.get(2).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(2).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(1).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(0).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(3).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(3).numeroDeCartas());
-                   System.out.println("Quantidade de Rounds:" + round);
-                  break;
+                    gravarArq.printf("Vencedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(3).getNome() + "\n" + 
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
+                   break;
               }
               else if(list.get(3).numeroDeCartas() == 32){
-                   System.out.println("Vencedor:" + list.get(3).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(3).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(1).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(2).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
-                   System.out.println("Perdedor:" + list.get(0).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(2).numeroDeCartas());
-                   System.out.println("Quantidade de Rounds:" + round);
+                    gravarArq.printf("Vencedor:" + list.get(3).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
                    break;
               }
               }
@@ -248,6 +259,263 @@ public class SuperTrunfoDaReciclagem {
           System.out.println("QUANTIDADE DE PLAYERS INVALIDA!");
           System.out.println();
       }
+      arq.close();
+    } 
+    
+  public void startJogoManual() throws IOException {
+      FileWriter arq = new FileWriter("c:\\teste.txt");
+      PrintWriter gravarArq = new PrintWriter(arq);
+      Scanner scanner = new Scanner(System.in);
+      if(getQntJogadores() == 2){
+          counter = getRandom(1);
+          counterSecond = counter + 1;
+          if(counterSecond == counter){
+              if(counterSecond == 2){
+                  counterSecond = 0;
+              }
+          }
+          do{
+              
+              round++;
+              do{ 
+                  System.out.println("\n" + "Jogador:" + list.get(counter).getNome());
+                  System.out.println("CARTA: " + list.get(counter).getCartas().getNome() + "\n" + 
+                  "Ataque:" + list.get(counter).getCartas().getAtaque() + "\n" +  "Decomposição: " + list.get(counter).getCartas().getDecomposicao() + "\n" +
+                  "Cor: " + list.get(counter).getCartas().getCor());
+                  System.out.println("==========================");
+                  System.out.println("= ROUND:  " + round + "              =");
+                  System.out.println("= 1- Ataque:             =");
+                  System.out.println("= 2- Decomposição:       =");
+                  System.out.println("= 3- Cor:                =");
+                  System.out.println("==========================");
+                  System.out.println("= Optção:  ");
+                  aux = scanner.nextInt();
+                  if(aux > 3 || aux < 1){
+                      System.out.println("OPÇÃO INCORRETA DIGITE NOVAMENTE!");
+                      System.out.println();
+                      round--;
+                  }
+              }while(aux < 1 && aux > 3);
+              aux2 = comparationCards(aux, counter, counterSecond);
+              if(aux2 == -1){
+                  empate = verifyMonte();
+                  if(empate != 0){
+                      distributionMonte(counterSecond);
+                  }
+                        trade = counter;
+                        counter = counterSecond;
+                        counterSecond = trade;
+                  }
+                 else if(aux2 == 1){
+                  empate = verifyMonte();
+                  if(empate != 0){
+                      distributionMonte(counter);
+                  }
+                }
+                         
+              if(list.get(0).numeroDeCartas() == 0 || list.get(1).numeroDeCartas() == 0){
+                  empate = verifyMonte();
+                  if(empate != 0){
+                      if(list.get(0).numeroDeCartas() == 0){
+                          distributionMonte(1);                          
+                      }
+                      else if(list.get(1).numeroDeCartas() == 0){
+                          distributionMonte(0);
+           }
+        }
+                   if(list.get(1).numeroDeCartas() == 32){
+                  gravarArq.printf("Vencedor: " + list.get(1).getNome() +  "\n" +
+                  "Quantidade de Cartas: " + list.get(1).numeroDeCartas() +  "\n" +
+                   "Perdedor: " + list.get(0).getNome() +  "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() +  "\n" +
+                   "Quantidade de Rounds: " + round);
+                    arq.close();
+                  break;
+              }
+                   else if(list.get(0).numeroDeCartas() == 32){
+                gravarArq.printf("Vencedor: " + list.get(0).getNome() +  "\n" +
+                  "Quantidade de Cartas: " + list.get(0).numeroDeCartas() +  "\n" +
+                   "Perdedor: " + list.get(1).getNome() +  "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() +  "\n" +
+                   "Quantidade de Rounds: " + round);
+                    arq.close();
+                  break;
+                  }
+              }
+              System.out.println("\nQuantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
+              System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
+              
+          }while(!list.get(0).TemCartas()|| !list.get(1).TemCartas());
+          
+      }
+      else if(getQntJogadores() == 4){
+          counter = getRandom(3);
+          counterSecond = counter + 1;
+          if(counterSecond == 4){
+              counterSecond = 0;
+          }
+          
+          do{
+              round++;
+              System.out.println();
+              do{ 
+                  System.out.println("\n" + "Jogador:" + list.get(counter).getNome());
+                  System.out.println("CARTA: " + list.get(counter).getCartas().getNome() + "\n" + 
+                  "Ataque:" + list.get(counter).getCartas().getAtaque() + "\n" +  "Decomposição: " + list.get(counter).getCartas().getDecomposicao() + "\n" +
+                  "Cor: " + list.get(counter).getCartas().getCor());
+                  System.out.println("==========================");
+                  System.out.println("= ROUND:  " + round + "              =");
+                  System.out.println("= 1- Ataque:             =");
+                  System.out.println("= 2- Decomposição:       =");
+                  System.out.println("= 3- Cor:                =");
+                  System.out.println("==========================");
+                  System.out.println("= Optção:  ");
+                  aux = scanner.nextInt();
+                  if(aux > 3 || aux < 1){
+                      System.out.println("OPÇÃO INCORRETA DIGITE NOVAMENTE!");
+                      System.out.println();
+                      round--;
+                  }
+              }while(aux < 1 && aux > 3);
+              aux2 = comparationCards(aux, counter, counterSecond);
+              
+              if(aux2 == -1){
+                   empate = verifyMonte();
+                  if(empate != 0){
+                      distributionMonte(counterSecond);
+                  }
+                        trade = counter;
+                        counter = counterSecond;
+                        counterSecond = counterSecond + 1;
+                        if(counterSecond == 4){
+                            counterSecond = 0;
+                        }
+                        if(counterSecond == counter){
+                            counterSecond = counterSecond + 1;
+                            if(counterSecond == 4){
+                                counterSecond = 0;
+                            }
+                        }
+              }
+              
+              else if(aux2 == 1){
+                   empate = verifyMonte();
+                  if(empate != 0){
+                      distributionMonte(counter);
+                  }
+                  counterSecond = counterSecond + 1;
+                  if(counterSecond == 4){
+                            counterSecond = 0;
+                  }
+                  if(counterSecond == counter){
+                       counterSecond = counterSecond + 1;
+                        if(counterSecond == 4){
+                                counterSecond = 0;
+                            }
+                        }
+              }
+              if(aux2 == 0){
+                  counterSecond = counterSecond + 1;
+                  if(counterSecond == 4){
+                      counterSecond = 0;
+                      if(counterSecond == counter){
+                          counterSecond = counterSecond + 1;
+                      }
+                  }
+                  if(counterSecond == counter){
+                      counterSecond = counterSecond + 1;
+                      if(counterSecond == 4){
+                          counterSecond = 0;
+                      }
+                  }
+              }
+              //Verifica quais jogadores tem cartas vazias e não utiliza eles.
+              while(list.get(counterSecond).numeroDeCartas() == 0){
+                  verify++; 
+                  counterSecond = counterSecond + 1;
+                   if(counterSecond == counter){
+                       counterSecond = counterSecond + 1;
+                       if(counterSecond == 4){
+                           counterSecond = 0;
+                       }
+                   }
+                   if(counterSecond == 4){
+                       counterSecond = 0;
+                       if(counterSecond == counter){
+                           counterSecond = counterSecond + 1;
+                       }
+                   }
+                   if(verify == 4){
+                       break;
+                  }
+              }
+              if(verify != 4){
+                  verify = 0;
+              System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
+              System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas() + "\n");
+              }
+              else{
+                   if(list.get(0).numeroDeCartas() == 32){
+                    gravarArq.printf("Vencedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(3).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
+                   break;
+              }
+              else if(list.get(1).numeroDeCartas() == 32){
+                    gravarArq.printf("Vencedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(3).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
+                   break;
+                    
+              }
+              else if(list.get(2).numeroDeCartas() == 32){
+                    gravarArq.printf("Vencedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(3).getNome() + "\n" + 
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
+                   break;
+              }
+              else if(list.get(3).numeroDeCartas() == 32){
+                    gravarArq.printf("Vencedor:" + list.get(3).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(3).numeroDeCartas() + "\n" + "\n" +
+                    "Perdedor:" + list.get(1).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(0).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(2).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(1).numeroDeCartas() + "\n" + "\n" +
+                   "Perdedor:" + list.get(0).getNome() + "\n" +
+                   "Quantidade de Cartas: " + list.get(2).numeroDeCartas() + "\n" + "\n" +
+                   "Quantidade de Rounds:" + round);
+                   //arq.close();
+                   break;
+              }
+              }
+            }while(!list.get(0).TemCartas()|| !list.get(1).TemCartas() || !list.get(2).TemCartas() || !list.get(3).TemCartas());
+        }
+      else{
+          System.out.println("\nQUANTIDADE DE PLAYERS INVALIDA!");
+          System.out.println();
+      }
+      arq.close();
     } 
     //Setters
     public void setJogadorName(String name) {
@@ -271,16 +539,18 @@ public class SuperTrunfoDaReciclagem {
     public int comparationCards(int nIndex, int desafiante, int desafiado) {
         if (nIndex == 1) { // COMPARA ATAQUE
             if (list.get(desafiante).getCartas().comparationAtaque(list.get(desafiante).getCartas(), list.get(desafiado).getCartas()) == 1) {
+                System.out.println("\nROUND: " + round);
                 System.out.println("Vencedor no quesito Ataque: " + list.get(desafiante).getNome());
                 System.out.println("Carta Vencedora:" + list.get(desafiante).getCartas());
-                System.out.println("Carta Perdedora: " + list.get(desafiado).getCartas());
+                System.out.println("Carta Perdedora: " + list.get(desafiado).getCartas() + "\n");
                 card = list.get(desafiado).excluir();
                 list.get(desafiante).incluir(card);
                 return 1;
             } else if (list.get(desafiante).getCartas().comparationAtaque(list.get(desafiante).getCartas(), list.get(desafiado).getCartas()) == -1){
+                System.out.println("\nROUND: " + round);
                 System.out.println("Vencedor no quesito Ataque: " + list.get(desafiado).getNome());
                 System.out.println("Carta Vencedora:" + list.get(desafiado).getCartas());
-                System.out.println("Carta Perdedora: " + list.get(desafiante).getCartas());
+                System.out.println("Carta Perdedora: " + list.get(desafiante).getCartas() + "\n");
                 card = list.get(desafiante).excluir();
                 list.get(desafiado).incluir(card);
                 return -1;
@@ -290,7 +560,8 @@ else {
                 monte.add(card);
                 card = list.get(desafiado).excluir();
                 monte.add(card);
-                System.out.println("EMPATE!");
+                System.out.println("\nROUND: " + round);
+                System.out.println("EMPATE!\n");
                                 if(list.get(desafiante).numeroDeCartas() == 0){
                     distributionMonte(desafiado);
                     return -1;
@@ -303,16 +574,18 @@ else {
             }
         } else if (nIndex == 2) { // COMPARA DECOMPOSIÇÃO
             if (list.get(desafiante).getCartas().comparationDecomp(list.get(desafiante).getCartas(), list.get(desafiado).getCartas()) == 1) {
-               System.out.println("Vencedor no quesito Decomp: " + list.get(desafiante).getNome());
+                System.out.println("\nROUND: " + round);
+                System.out.println("Vencedor no quesito Decomp: " + list.get(desafiante).getNome());
                 System.out.println("Carta Vencedora:" + list.get(desafiante).getCartas());
-                System.out.println("Carta Perdedora: " + list.get(desafiado).getCartas());
+                System.out.println("Carta Perdedora: " + list.get(desafiado).getCartas()+ "\n");
                 card = list.get(desafiado).excluir();
                 list.get(desafiante).incluir(card);
                 return 1;
             } else if (list.get(desafiante).getCartas().comparationDecomp(list.get(desafiante).getCartas(), list.get(desafiado).getCartas()) == -1) {
+                System.out.println("\nROUND: " + round);
                System.out.println("Vencedor no quesito Decomp: " + list.get(desafiado).getNome());
                 System.out.println("Carta Vencedora:" + list.get(desafiado).getCartas());
-                System.out.println("Carta Perdedora: " + list.get(desafiante).getCartas());
+                System.out.println("Carta Perdedora: " + list.get(desafiante).getCartas() + "\n");
                 card = list.get(desafiante).excluir();
                 list.get(desafiado).incluir(card);
                 return -1;
@@ -321,7 +594,8 @@ else {
                 monte.add(card);
                 card = list.get(desafiado).excluir();
                 monte.add(card);
-                System.out.println("EMPATE!");
+                System.out.println("\nROUND: " + round);
+                System.out.println("EMPATE!\n");
                                 if(list.get(desafiante).numeroDeCartas() == 0){
                     distributionMonte(desafiado);
                     return -1;
@@ -335,14 +609,16 @@ else {
         
         } else if(nIndex == 3){ // COMPARA COR
             if (list.get(desafiante).getCartas().comparationCor(list.get(desafiante).getCartas(), list.get(desafiado).getCartas()) == 1) {
+                System.out.println("\nROUND: " + round);
                System.out.println("Vencedor no quesito Cor: " + list.get(desafiante).getNome());
                 System.out.println("Carta Vencedora:" + list.get(desafiante).getCartas());
-                System.out.println("Carta Perdedora: " + list.get(desafiado).getCartas());
+                System.out.println("Carta Perdedora: " + list.get(desafiado).getCartas() + "\n");
                 card = list.get(desafiado).excluir();
                 list.get(desafiante).incluir(card);
                 return 1;
             } else if (list.get(desafiante).getCartas().comparationCor(list.get(desafiante).getCartas(), list.get(desafiado).getCartas()) == -1) {
-               System.out.println("Vencedor  no quesito Cor: " + list.get(desafiado).getNome());
+                System.out.println("\nROUND: " + round);
+                System.out.println("Vencedor  no quesito Cor: " + list.get(desafiado).getNome());
                 System.out.println("Carta Vencedora:" + list.get(desafiado).getCartas());
                 System.out.println("Carta Perdedora: " + list.get(desafiante).getCartas());
                 card = list.get(desafiante).excluir();
@@ -353,6 +629,7 @@ else {
                 monte.add(card);
                 card = list.get(desafiado).excluir();
                 monte.add(card);
+                System.out.println("\nROUND: " + round);
                 System.out.println("EMPATE!");
                                 if(list.get(desafiante).numeroDeCartas() == 0){
                     distributionMonte(desafiado);
@@ -366,7 +643,7 @@ else {
             }
         }
         else{
-            System.out.println("OPÇÃO INVALIDA DE COMPARAÇÃO");
+            System.out.println("\nOPÇÃO INVALIDA DE COMPARAÇÃO\n");
             return 999;
         }
         
