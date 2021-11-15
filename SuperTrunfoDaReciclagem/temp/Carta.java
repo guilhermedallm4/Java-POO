@@ -124,6 +124,16 @@ public abstract class Carta{
                         return 1;
                     }
                 }
+                else if(cartaSecond.cor.toString().equals("maior")){
+                    if(cartaOne.getCodigo().equals("A1") || cartaOne.getCodigo().equals("B1") || cartaOne.getCodigo().equals("C1") ||
+                            cartaOne.getCodigo().equals("E1") || cartaOne.getCodigo().equals("F1")|| cartaOne.getCodigo().equals("H1")){
+                        return 1;
+                    }
+                    else{
+                        System.out.println("DOM LATON VENCEU!");
+                        return -1;
+                    }
+                }
                 //COMPARA O VERMELHO
                 else if(cartaOne.cor.toString().equals("vermelho")){
                     if(cartaSecond.cor.toString().equals("amarelo") || cartaSecond.cor.toString().equals("verde") || cartaSecond.cor.toString().equals("marrom") || 
@@ -192,7 +202,7 @@ public abstract class Carta{
                     }
                 }
                 else if(cartaOne.cor.toString().equals("laranja")){
-                    if(cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") || cartaSecond.cor.toString().equals("vermelho") 
+                if(cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") || cartaSecond.cor.toString().equals("vermelho") 
                             || cartaSecond.cor.toString().equals("amarelo")|| cartaSecond.cor.toString().equals("verde")){
                         return 1;
                     }
@@ -202,7 +212,7 @@ public abstract class Carta{
                 }
                 
                 else if(cartaOne.cor.toString().equals("marrom")){
-                                        if(cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") || cartaSecond.cor.toString().equals("vermelho") 
+                if(cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") || cartaSecond.cor.toString().equals("vermelho") 
                             || cartaSecond.cor.toString().equals("amarelo")||cartaSecond.cor.toString().equals("verde")){
                         return 1;
                     }
@@ -212,7 +222,7 @@ public abstract class Carta{
                 
                 }
                 else if(cartaOne.cor.toString().equals("roxo")){
-                                        if(cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") || cartaSecond.cor.toString().equals("vermelho") 
+                    if(cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") || cartaSecond.cor.toString().equals("vermelho") 
                             || cartaSecond.cor.toString().equals("amarelo")|| cartaSecond.cor.toString().equals("verde")){
                         return 1;
                     }
@@ -222,11 +232,11 @@ public abstract class Carta{
                 
                 }
                 else if(cartaOne.cor.toString().equals("branco")){
-                                        if(cartaSecond.cor.toString().equals("laranja") ||cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") 
+                    if(cartaSecond.cor.toString().equals("laranja") ||cartaSecond.cor.toString().equals("roxo") || cartaSecond.cor.toString().equals("azul") 
                             || cartaSecond.cor.toString().equals("vermelho")){
                         return 1;
                     }
-                                         else if(cartaSecond.cor.toString().equals("amarelo")){
+                    else if(cartaSecond.cor.toString().equals("amarelo")){
                         return 0;
                     }
                     else{
@@ -239,7 +249,7 @@ public abstract class Carta{
                             || cartaSecond.cor.toString().equals("azul") || cartaSecond.cor.toString().equals("menor")){
                         return 1;
                     }
-                                         else if(cartaSecond.cor.toString().equals("vermelho")){
+                    else if(cartaSecond.cor.toString().equals("vermelho")){
                         return 0;
                     }
                     else{
@@ -281,7 +291,7 @@ public abstract class Carta{
             }
            
         }
-        if(cartaOne.getAtaque() > cartaSecond.getAtaque()){
+        else if(cartaOne.getAtaque() > cartaSecond.getAtaque()){
             return 1;
         }
         else if(cartaOne.getAtaque() == cartaSecond.getAtaque()){
@@ -314,7 +324,7 @@ public abstract class Carta{
             }
            
         }
-        if(cartaOne.getDecomposicao() > cartaSecond.getDecomposicao()){
+        else if(cartaOne.getDecomposicao() > cartaSecond.getDecomposicao()){
             return 1;
         }
         else if(cartaOne.getDecomposicao() == cartaSecond.getDecomposicao()){

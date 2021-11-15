@@ -4,6 +4,8 @@ import java.util.LinkedList;
 
 public class Jogador {
     public String nome;
+    public Carta carta;
+    public int size;
     Queue<Carta>cartas = new LinkedList<>();
 
     public Jogador(String name){
@@ -13,21 +15,19 @@ public class Jogador {
       return this.getNome();
     }
     public int numeroDeCartas(){
-      int size = this.cartas.size();
+      size = this.cartas.size();
       return size;
     }
     public void incluir(Carta carta){
       this.setCartas(carta);
     }
     
-    public Carta excluir(){
-      
-      Carta carta = this.cartas.remove();
+    public Carta excluir(){   
+      carta = this.cartas.remove();
       return carta;
     }
 
     public boolean TemCartas(){
-    
       return this.cartas.isEmpty();    
     }
 

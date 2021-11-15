@@ -285,18 +285,18 @@ public class SuperTrunfoDaReciclagem {
                 list.get(desafiado).incluir(card);
                 return -1;
             }
-             else {
+else {
                 card = list.get(desafiante).excluir();
                 monte.add(card);
                 card = list.get(desafiado).excluir();
                 monte.add(card);
                 System.out.println("EMPATE!");
-                if(list.get(0).numeroDeCartas() == 0){
-                    distributionMonte(1);
+                                if(list.get(desafiante).numeroDeCartas() == 0){
+                    distributionMonte(desafiado);
                     return -1;
                 }
-                else if(list.get(1).numeroDeCartas() == 0){
-                    distributionMonte(0);
+                else if(list.get(desafiado).numeroDeCartas() == 0){
+                    distributionMonte(desafiante);
                     return 1;
                 }
                 return 0;
@@ -316,18 +316,18 @@ public class SuperTrunfoDaReciclagem {
                 card = list.get(desafiante).excluir();
                 list.get(desafiado).incluir(card);
                 return -1;
-            }                else {
+            }else {
                 card = list.get(desafiante).excluir();
                 monte.add(card);
                 card = list.get(desafiado).excluir();
                 monte.add(card);
                 System.out.println("EMPATE!");
-                                if(list.get(0).numeroDeCartas() == 0){
-                    distributionMonte(1);
+                                if(list.get(desafiante).numeroDeCartas() == 0){
+                    distributionMonte(desafiado);
                     return -1;
                 }
-                else if(list.get(1).numeroDeCartas() == 0){
-                    distributionMonte(0);
+                else if(list.get(desafiado).numeroDeCartas() == 0){
+                    distributionMonte(desafiante);
                     return 1;
                 }
                 return 0;
@@ -354,12 +354,12 @@ public class SuperTrunfoDaReciclagem {
                 card = list.get(desafiado).excluir();
                 monte.add(card);
                 System.out.println("EMPATE!");
-                                if(list.get(0).numeroDeCartas() == 0){
-                    distributionMonte(1);
+                                if(list.get(desafiante).numeroDeCartas() == 0){
+                    distributionMonte(desafiado);
                     return -1;
                 }
-                else if(list.get(1).numeroDeCartas() == 0){
-                    distributionMonte(0);
+                else if(list.get(desafiado).numeroDeCartas() == 0){
+                    distributionMonte(desafiante);
                     return 1;
                 }
                 return 0;
@@ -412,5 +412,3 @@ public class SuperTrunfoDaReciclagem {
             }
         }
 }
-
-
