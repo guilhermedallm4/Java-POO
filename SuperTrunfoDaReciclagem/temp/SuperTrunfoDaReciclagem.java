@@ -69,55 +69,18 @@ public class SuperTrunfoDaReciclagem {
                       distributionMonte(counter);
                   }
                 }
-                              
-                              
-              else if(aux2 == 0){
-                if(list.get(counterSecond).numeroDeCartas() == 0){
-                       empate = verifyMonte();
-                        if(empate != 0){
-                        distributionMonte(counter);
-                        
-                   }
-                }
-                  else if(list.get(counter).numeroDeCartas() == 0){
-                       empate = verifyMonte();
-                        if(empate != 0){
-                        distributionMonte(counterSecond);
-                        trade = counter;
-                        counter = counterSecond;
-                        counterSecond = trade;
-                        
-                        }
-                    }
-                 if(aux2 == -1){
+                         
+              if(list.get(0).numeroDeCartas() == 0 || list.get(1).numeroDeCartas() == 0){
                   empate = verifyMonte();
                   if(empate != 0){
-                      distributionMonte(counterSecond);
-                  }
-                        trade = counter;
-                        counter = counterSecond;
-                        counterSecond = trade;
-                  }
-                 else if(aux2 == 1){
-                  empate = verifyMonte();
-                  if(empate != 0){
-                      distributionMonte(counter);
-                  }
-                }
-              } 
-              
-              System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
-              System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
-              
-              if(list.get(0).numeroDeCartas() == 32){
-                   System.out.println("Vencedor: " + list.get(0).getNome());
-                   System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
-                   System.out.println("Perdedor: " + list.get(1).getNome());
-                    System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
-                   System.out.println("Quantidade de Rounds: " + round);
-                  break;
-              }
-              else if(list.get(1).numeroDeCartas() == 32){
+                      if(list.get(0).numeroDeCartas() == 0){
+                          distributionMonte(1);                          
+                      }
+                      else if(list.get(1).numeroDeCartas() == 0){
+                          distributionMonte(0);
+           }
+        }
+                   if(list.get(1).numeroDeCartas() == 32){
                    System.out.println("Vencedor: " + list.get(1).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
                    System.out.println("Perdedor: " + list.get(0).getNome());
@@ -125,6 +88,17 @@ public class SuperTrunfoDaReciclagem {
                    System.out.println("Quantidade de Rounds: " + round);
                   break;
               }
+                   else if(list.get(0).numeroDeCartas() == 32){
+                   System.out.println("Vencedor: " + list.get(0).getNome());
+                   System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
+                   System.out.println("Perdedor: " + list.get(1).getNome());
+                    System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
+                   System.out.println("Quantidade de Rounds: " + round);
+                  break;
+                      }
+              }
+              System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
+              System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
               
           }while(!list.get(0).TemCartas()|| !list.get(1).TemCartas());
           
@@ -178,67 +152,21 @@ public class SuperTrunfoDaReciclagem {
                             }
                         }
               }
-              
-              else if(aux2 == 0){
-                if(list.get(counterSecond).numeroDeCartas() == 0){
-                       empate = verifyMonte();
-                        if(empate != 0){
-                        distributionMonte(counter);
-                        counterSecond = counterSecond + 1;
-                        if(counterSecond == 4){
-                            counterSecond = 0;
-                            if(counterSecond == counter){
-                                counterSecond = counterSecond + 1;
-                            }
-                        }
-                    if(counterSecond == counter){
-                         counterSecond = counterSecond + 1;
-                         if(counterSecond == 4){
-                             counterSecond = counterSecond + 1;
-                         }
-                      } 
-                   }
-                }
-                  else if(list.get(counter).numeroDeCartas() == 0){
-                       empate = verifyMonte();
-                        if(empate != 0){
-                        distributionMonte(counterSecond);
-                        trade = counter;
-                        counter = counterSecond;
-                        counterSecond = trade + 1;
-                        if(counterSecond == counter){
-                            counterSecond++;
-                            if(counterSecond == 4){
-                                counterSecond = 0;
-                            }
-                          }
-                        if(counterSecond == 4){
-                            counterSecond = 0;
-                            if(counterSecond == counter){
-                                counterSecond++;
-                            }
-                        }
-                      }
-                        
-                    }
-                  else{
-                      counterSecond = counterSecond + 1;
+              if(aux2 == 0){
+                  counterSecond = counterSecond + 1;
+                  if(counterSecond == 4){
+                      counterSecond = 0;
                       if(counterSecond == counter){
                           counterSecond = counterSecond + 1;
-                          if(counterSecond == 4){
-                              counterSecond = 0;
-                          }
-                      }
-                      if(counterSecond == 4){
-                          counterSecond = 0;
-                          if(counterSecond == counter){
-                              counterSecond = counterSecond + 1;
-                          }
                       }
                   }
-               
+                  if(counterSecond == counter){
+                      counterSecond = counterSecond + 1;
+                      if(counterSecond == 4){
+                          counterSecond = 0;
+                      }
+                  }
               }
-              
               //Verifica quais jogadores tem cartas vazias e não utiliza eles.
               while(list.get(counterSecond).numeroDeCartas() == 0){
                   verify++; 
@@ -259,16 +187,13 @@ public class SuperTrunfoDaReciclagem {
                        break;
                   }
               }
-               if(verify != 4){
-                   verify = 0;
-               }
-              
               if(verify != 4){
+                  verify = 0;
               System.out.println("Quantidade de Cartas do Jogador " + list.get(counter).getNome()  + " : " + list.get(counter).numeroDeCartas());
               System.out.println("Quantidade de Cartas do Jogador " + list.get(counterSecond).getNome()  + " : " + list.get(counterSecond).numeroDeCartas());
               }
-              
-              if(list.get(0).numeroDeCartas() == 32 && verify == 4){
+              else{
+                   if(list.get(0).numeroDeCartas() == 32){
                    System.out.println("Vencedor:" + list.get(0).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(0).numeroDeCartas());
                    System.out.println("Perdedor:" + list.get(1).getNome());
@@ -278,9 +203,9 @@ public class SuperTrunfoDaReciclagem {
                    System.out.println("Perdedor:" + list.get(3).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(3).numeroDeCartas());
                    System.out.println("Quantidade de Rounds:" + round);
-                  break;
+                   break;
               }
-              else if(list.get(1).numeroDeCartas() == 32 && verify == 4){
+              else if(list.get(1).numeroDeCartas() == 32){
                    System.out.println("Vencedor:" + list.get(1).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(1).numeroDeCartas());
                    System.out.println("Perdedor:" + list.get(0).getNome());
@@ -290,9 +215,9 @@ public class SuperTrunfoDaReciclagem {
                    System.out.println("Perdedor:" + list.get(3).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(3).numeroDeCartas());
                    System.out.println("Quantidade de Rounds:" + round);
-                  break;
+                    break;
               }
-              else if(list.get(2).numeroDeCartas() == 32  && verify == 4){
+              else if(list.get(2).numeroDeCartas() == 32){
                    System.out.println("Vencedor:" + list.get(2).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(2).numeroDeCartas());
                    System.out.println("Perdedor:" + list.get(1).getNome());
@@ -304,7 +229,7 @@ public class SuperTrunfoDaReciclagem {
                    System.out.println("Quantidade de Rounds:" + round);
                   break;
               }
-              else if(list.get(3).numeroDeCartas() == 32  && verify == 4){
+              else if(list.get(3).numeroDeCartas() == 32){
                    System.out.println("Vencedor:" + list.get(3).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(3).numeroDeCartas());
                    System.out.println("Perdedor:" + list.get(1).getNome());
@@ -314,7 +239,8 @@ public class SuperTrunfoDaReciclagem {
                    System.out.println("Perdedor:" + list.get(0).getNome());
                    System.out.println("Quantidade de Cartas: " + list.get(2).numeroDeCartas());
                    System.out.println("Quantidade de Rounds:" + round);
-                  break;
+                   break;
+              }
               }
             }while(!list.get(0).TemCartas()|| !list.get(1).TemCartas() || !list.get(2).TemCartas() || !list.get(3).TemCartas());
         }
@@ -365,6 +291,14 @@ public class SuperTrunfoDaReciclagem {
                 card = list.get(desafiado).excluir();
                 monte.add(card);
                 System.out.println("EMPATE!");
+                if(list.get(0).numeroDeCartas() == 0){
+                    distributionMonte(1);
+                    return -1;
+                }
+                else if(list.get(1).numeroDeCartas() == 0){
+                    distributionMonte(0);
+                    return 1;
+                }
                 return 0;
             }
         } else if (nIndex == 2) { // COMPARA DECOMPOSIÇÃO
@@ -388,6 +322,14 @@ public class SuperTrunfoDaReciclagem {
                 card = list.get(desafiado).excluir();
                 monte.add(card);
                 System.out.println("EMPATE!");
+                                if(list.get(0).numeroDeCartas() == 0){
+                    distributionMonte(1);
+                    return -1;
+                }
+                else if(list.get(1).numeroDeCartas() == 0){
+                    distributionMonte(0);
+                    return 1;
+                }
                 return 0;
             }
         
@@ -412,6 +354,14 @@ public class SuperTrunfoDaReciclagem {
                 card = list.get(desafiado).excluir();
                 monte.add(card);
                 System.out.println("EMPATE!");
+                                if(list.get(0).numeroDeCartas() == 0){
+                    distributionMonte(1);
+                    return -1;
+                }
+                else if(list.get(1).numeroDeCartas() == 0){
+                    distributionMonte(0);
+                    return 1;
+                }
                 return 0;
             }
         }
