@@ -1,4 +1,4 @@
-package SuperTrunfoDaReciclagem.temp;
+package SuperTrunfoDaReciclagem;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -6,8 +6,8 @@ package SuperTrunfoDaReciclagem.temp;
  * and open the template in the editor.
 
  */
+
 /**
- *
  * @author Felipe Marques
  */
 public enum Cor {
@@ -19,16 +19,8 @@ public enum Cor {
     // The string com o nome da cor.
     private final String cor;
 
-    Cor(String cor)
-    {
+    Cor(String cor) {
         this.cor = cor;
-    }
-
-   
-    @Override
-    public String toString()
-    {
-        return cor;
     }
 
     public static Cor stringToCor(String strCor) {
@@ -57,6 +49,11 @@ public enum Cor {
         if (strCor.equals(MENOR.toString()))
             return MENOR;
         return INDEFINIDA;
+    }
+
+    @Override
+    public String toString() {
+        return cor;
     }
 
 }
