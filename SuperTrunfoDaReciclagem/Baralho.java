@@ -8,9 +8,9 @@ import java.util.List;
 
 public class Baralho {
 
-    boolean reciclar;
-    String testar = "sim";
-    String path = "c:\\Super Trunfo da Reciclagem.csv";
+     private boolean reciclar;
+     private String testar = "sim";
+     private String path = "c:\\Super Trunfo da Reciclagem.csv";
 
     List<Carta> list = new ArrayList<Carta>();
 

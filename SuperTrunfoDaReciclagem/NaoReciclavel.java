@@ -26,9 +26,4 @@ public class NaoReciclavel extends Carta {
         return this.reciclavel;
     }
 
-    //SETTERS
-    public void setReciclavel(boolean reciclavel) {
-        this.reciclavel = reciclavel;
-    }
-
 }

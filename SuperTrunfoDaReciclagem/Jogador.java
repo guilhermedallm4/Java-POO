@@ -4,8 +4,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Jogador {
-    public String nome;
-    Queue<Carta> cartas = new LinkedList<>();
+     private String nome;
+     private Queue<Carta> cartas = new LinkedList<>();
 
     public Jogador(String name) {
         this.nome = name;
@@ -16,18 +16,18 @@ public class Jogador {
     }
 
     public int numeroDeCartas() {
-        int size = this.cartas.size();
-        return size;
+        return this.cartas.size();
+        
     }
 
     public void incluir(Carta carta) {
-        this.setCartas(carta);
+        this.cartas.add(carta);
     }
 
     public Carta excluir() {
 
-        Carta carta = this.cartas.remove();
-        return carta;
+        return this.cartas.remove();
+        
     }
 
     public boolean TemCartas() {
@@ -40,19 +40,10 @@ public class Jogador {
         return this.nome;
     }
 
-    //SETTERS
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public Carta getCartas() {
         return this.cartas.peek();
 
     }
-
-    public void setCartas(Carta carta) {
-        this.cartas.add(carta);
-    }
-
 
 }

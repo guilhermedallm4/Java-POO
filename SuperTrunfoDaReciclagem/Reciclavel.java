@@ -24,9 +24,4 @@ public class Reciclavel extends Carta {
     public boolean getReciclavel() {
         return this.reciclavel;
     }
-
-    //SETTERS
-    public void setReciclavel(boolean reciclavel) {
-        this.reciclavel = reciclavel;
-    }
 }
